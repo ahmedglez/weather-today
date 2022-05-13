@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-width: 250px;
+  min-width: 200px;
 }
 
 @media only screen and (max-width: 570px) {
@@ -13,6 +13,6 @@
     width: fit-content;
     flex-direction: column;
     align-items: center;
-    min-width: 296px;
+    min-width: 200px;
   }
 }

@@ -2,17 +2,18 @@
 
 .header {
   width: 70%;
-  height: 20%;
+  height: 15%;
   max-height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  margin-top: 40px;
   font-family: $general-font;
   color: $font-color;
   min-width: 296px;
   font-size: 1.2em;
+  max-height: 150px;
+  min-width: 200px;
 }
 
 @media only screen and (min-width: 900px) {

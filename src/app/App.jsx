@@ -85,7 +85,6 @@ const App = () => {
 		<AppContext.Provider value={data}>
 			<Header />
 			<Main />
-			<Footer />
 		</AppContext.Provider>
 	);
 };
