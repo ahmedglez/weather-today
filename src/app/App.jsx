@@ -62,7 +62,7 @@ const App = () => {
 				});
 			});
 		}
-
+		console.log(url)
 		getWeather(url);
 	}, []);
 
