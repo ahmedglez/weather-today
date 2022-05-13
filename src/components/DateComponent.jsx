@@ -11,7 +11,7 @@ const DateComponent = () => {
 	const mydate = formatDate(date);
 	return (
 		<div className='date'>
-			<p>{mydate}</p>
+			<h3>{mydate}</h3>
 		</div>
 	);
 };

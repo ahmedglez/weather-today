@@ -9,7 +9,7 @@ const TimeComponent = () => {
 
 	return (
 		<div className='time'>
-			<p>{str}</p>
+			<h4>{date.getHours()} : {date.getMinutes()} {date.getHours()<12 ? 'am' : 'pm'}</h4>
 		</div>
 	);
 };

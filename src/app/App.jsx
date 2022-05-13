@@ -66,7 +66,20 @@ const App = () => {
 		getWeather(url);
 	}, []);
 
+	const date = new Date()
+
 	const data = {location,current}
+
+	if(data.temp_c<10){
+		document.documentElement.style.setProperty('--myVariable', 'blue');
+	}else if(data.temp_c>30){
+		document.documentElement.style.setProperty('--myVariable', 'red');
+	}else if(date.getHours()<6 || date.getHours>20){
+		document.documentElement.style.setProperty('--myVariable', 'black');
+	}else if(date.getHours()>6 && date.getHours<20){
+		document.documentElement.style.setProperty('--myVariable', 'yellow');
+
+	}
 
 	return (
 		<AppContext.Provider value={data}>

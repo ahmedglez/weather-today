@@ -4,7 +4,7 @@ import '../styles/CityComponent.scss';
 const CityComponent = ({ city }) => {
 	return (
 		<div className='city'>
-			<p>{city}</p>
+			<h3>{city}</h3>
 		</div>
 	);
 };

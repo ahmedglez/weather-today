@@ -6,11 +6,11 @@
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: 80px;
-  color: #e6e5e5;
+  color: rgba(202, 202, 202, 0.867);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (max-width: 900px) {
   .main {
     flex-direction: column;
     align-items: center;

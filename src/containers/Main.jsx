@@ -9,8 +9,15 @@ const Main = () => {
 
 	return (
 		<div className='main'>
-			<IconComponent icon={current.condition.icon} text={current.condition.text} />
-			<InfoComponent />
+			<IconComponent
+				icon={current.condition.icon}
+				text={current.condition.text}
+			/>
+			<InfoComponent
+				humidity={current.humidity}
+				temp={current.temp_c}
+				text={current.condition.text}
+			/>
 		</div>
 	);
 };
