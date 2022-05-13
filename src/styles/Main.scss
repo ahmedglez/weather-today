@@ -1,0 +1,23 @@
+@import './root.scss';
+
+.main{
+    height: 60%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+   flex-direction: row;
+   justify-content:space-evenly;    
+    margin-top: 80px;
+    color: $font-color;
+    font-family: $general-font
+}
+
+
+
+@media only screen and (max-width: 570px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+        min-width: 296px
+    }
+  }

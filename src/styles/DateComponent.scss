@@ -1,0 +1,9 @@
+@import './root.scss';
+
+.date{    
+    text-align: center;
+    margin: 0 auto;
+    height: fit-content;
+    font-family: $general-font;
+    max-height: 60px;
+}
