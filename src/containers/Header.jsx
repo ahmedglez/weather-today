@@ -10,13 +10,15 @@ const Header = () => {
 	const datetime = new String(location.localtime);
 	const time = datetime.split(' ')[1];
 	const city = location.name
+	const region = location.region;
+	const country = location.country
 	console.log("Location",location)
 
 	return (
 		<div className='header'>
 			<DateComponent  />
 			<TimeComponent time={time} />
-			<CityComponent city={city} />
+			<CityComponent city={city} country={country} region={region} />
 		</div>
 	);
 };

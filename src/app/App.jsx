@@ -14,8 +14,8 @@ const App = () => {
 	const [current, setCurrent] = useState(initialCurrent);
 	const requestIp = require('request-ip');
 
-	const createLinkWithIP = (ip) => {
-		const url = weatherAPI + ip + '&aqi=yes';
+	const createLinkWithLatitudeLongitude = (lat, lon) => {
+		const url = weatherAPI + lat + ',' + lon + '&aqi=yes';
 		return url;
 	};
 
@@ -23,15 +23,21 @@ const App = () => {
 		var myIP = 0;
 		var url = 'No URL ';
 
-		async function getIP() {
-			myIP = await internalIpV4();
-			console.log('IP', myIP);
-			url = createLinkWithIP(myIP);
-			console.log('URL', url);
-			getWeather(url);
+		async function getURL() {
+			await navigator.geolocation.getCurrentPosition(function (location) {
+				console.log(location.coords.latitude);
+				console.log(location.coords.longitude);
+				console.log(location.coords.accuracy);
+				url = createLinkWithLatitudeLongitude(
+					location.coords.latitude,
+					location.coords.longitude
+				);
+				console.log('URL', url);
+				getWeather(url);
+			});
 		}
 
-		getIP();
+		getURL();
 
 		async function getWeather(url) {
 			console.log(url);
@@ -72,7 +78,6 @@ const App = () => {
 				});
 			});
 		}
-		
 	}, []);
 
 	const date = new Date();

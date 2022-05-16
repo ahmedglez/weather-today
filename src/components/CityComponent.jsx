@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/CityComponent.scss';
 
-const CityComponent = ({ city }) => {
+const CityComponent = ({ city, country, region }) => {
 	return (
 		<div className='city'>
-			<h3>{city}</h3>
+			<h3>{city} - {region} - {country}</h3>
 		</div>
 	);
 };
