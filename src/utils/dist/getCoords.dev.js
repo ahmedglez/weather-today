@@ -1,24 +1,11 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.longitude = exports.latitude = void 0;
-var latitude = 0;
-exports.latitude = latitude;
-var longitude = 0;
-exports.longitude = longitude;
+var requestIp = require('request-ip'); // inside middleware handler
 
-var success = function success(position) {
-  exports.latitude = latitude = position.coords.latitude;
-  exports.longitude = longitude = position.coords.longitude;
-  console.log(latitude, longitude);
+
+var ipMiddleware = function ipMiddleware(req, res, next) {
+  var clientIp = requestIp.getClientIp(req);
+  next();
+  debugger;
+  console.log(clientIp);
 };
-
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(success, function () {
-    console.error('Error');
-  });
-} else {
-  alert('No ubicacion disponible');
-}

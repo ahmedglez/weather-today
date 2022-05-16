@@ -4,24 +4,34 @@ import Main from '../containers/Main';
 import Footer from '../containers/Footer';
 import '../styles/App.css';
 import AppContext from '../context/AppContext';
-import { latitude, longitude } from '../utils/getCoords';
 import weatherAPI from '../api/weatherAPI';
 import axios from 'axios';
 import { initialCurrent, initialLocation } from '../hooks/initialState';
+import { internalIpV6, internalIpV4 } from 'internal-ip';
 
 const App = () => {
 	const [location, setLocation] = useState(initialLocation);
-
 	const [current, setCurrent] = useState(initialCurrent);
+	const requestIp = require('request-ip');
 
-	const createLinkWithLatitudeLongitude = () => {
-		const url = weatherAPI + latitude + ',' + longitude + '&aqi=yes';
+	const createLinkWithIP = (ip) => {
+		const url = weatherAPI + ip + '&aqi=yes';
 		return url;
 	};
 
 	useEffect(() => {
-		const url = createLinkWithLatitudeLongitude();
-		console.log(url);
+		var myIP = 0;
+		var url = 'No URL ';
+
+		async function getIP() {
+			myIP = await internalIpV4();
+			console.log('IP', myIP);
+			url = createLinkWithIP(myIP);
+			console.log('URL', url);
+			getWeather(url);
+		}
+
+		getIP();
 
 		async function getWeather(url) {
 			console.log(url);
@@ -62,23 +72,21 @@ const App = () => {
 				});
 			});
 		}
-		console.log(url)
-		getWeather(url);
+		
 	}, []);
 
-	const date = new Date()
+	const date = new Date();
 
-	const data = {location,current}
+	const data = { location, current };
 
-	if(data.temp_c<10){
-		document.documentElement.style.setProperty('--myVariable', 'blue');
-	}else if(data.temp_c>30){
-		document.documentElement.style.setProperty('--myVariable', 'red');
-	}else if(date.getHours()<6 || date.getHours>20){
-		document.documentElement.style.setProperty('--myVariable', 'black');
-	}else if(date.getHours()>6 && date.getHours<20){
-		document.documentElement.style.setProperty('--myVariable', 'yellow');
-
+	if (data.temp_c < 10) {
+		document.documentElement.style.setProperty('--background', 'blue');
+	} else if (data.temp_c > 30) {
+		document.documentElement.style.setProperty('--background', 'red');
+	} else if (date.getHours() < 6 || date.getHours > 20) {
+		document.documentElement.style.setProperty('--background', 'black');
+	} else if (date.getHours() > 6 && date.getHours < 20) {
+		document.documentElement.style.setProperty('--background', 'yellow');
 	}
 
 	return (

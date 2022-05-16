@@ -10,7 +10,7 @@ const Header = () => {
 	const datetime = new String(location.localtime);
 	const time = datetime.split(' ')[1];
 	const city = location.name
-	console.log
+	console.log("Location",location)
 
 	return (
 		<div className='header'>
